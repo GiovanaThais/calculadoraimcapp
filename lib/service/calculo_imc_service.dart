@@ -1,3 +1,7 @@
 import 'dart:math';
 
-class CalculoImcService {}
+class CalculoIMCService {
+  double calcularIMC(double peso, double altura) {
+    return peso / (altura * altura);
+  }
+}

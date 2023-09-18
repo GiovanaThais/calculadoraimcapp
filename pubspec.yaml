@@ -89,5 +89,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-dependencies:
-  google_fonts: ^6.0.0

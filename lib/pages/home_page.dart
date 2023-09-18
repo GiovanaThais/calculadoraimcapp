@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meuapp/service/calculo_imc_service.dart/';
+import 'package:meuapp/service/calculo_imc_service.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -14,6 +14,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String resultadoImc = '';
   TextEditingController controllerPeso = TextEditingController();
   TextEditingController controllerAltura = TextEditingController();
+  CalculoIMCService calculoIMCService = CalculoIMCService();
 
   @override
   Widget build(BuildContext context) {
@@ -64,10 +65,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        num numAux = (num.parse(controllerPeso.text) /
-                            (num.parse(controllerAltura.text) *
-                                num.parse(controllerAltura.text)));
-                        resultadoImc = numAux.toStringAsFixed(2);
+                        double peso = double.parse(controllerPeso.text);
+                        double altura = double.parse(controllerAltura.text);
+                        double imc =
+                            calculoIMCService.calcularIMC(peso, altura);
+                        resultadoImc = imc.toStringAsFixed(2);
                       });
                     },
                     child: const Text('Calcular')),
